@@ -7,10 +7,12 @@
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
+
         html, body, #map {
             width: 100%;
             height: 100%;
@@ -941,6 +943,10 @@
         var baseMaps = {};
         L.control.layers(baseMaps,{'<img src="legend/1064J_015_CR_gp_16.png" /> CR - Curb Ramps': layer_1064J_015_CR_gp_16,'<img src="legend/1064J_016_T_gp_15.png" /> T - Traffic Striping': layer_1064J_016_T_gp_15,'<img src="legend/1064J_014_R_gp_14.png" /> R - Pavement': layer_1064J_014_R_gp_14,'<img src="legend/1064J_013_RA_gp_12.png" /> RA - Roadway/Alignment': layer_1064J_013_RA_gp_12,'<img src="legend/1064J_010_JT_gp_13.png" /> JT - Joint Trenches': layer_1064J_010_JT_gp_13,'<img src="legend/1064J_011_ET_gp_11.png" /> ET - Intersection Electrics': layer_1064J_011_ET_gp_11,'<img src="legend/1064J_012_E_gp_10.png" /> E - Street Lighting': layer_1064J_012_E_gp_10,'<img src="legend/1064J_005_L_gp_9.png" /> L - Landscaping': layer_1064J_005_L_gp_9,'<img src="legend/1064J_004_ESA_gp_8.png" /> ESA/SOIS Identification': layer_1064J_004_ESA_gp_8,'<img src="legend/1064J_009_SMP_gp_7.png" /> MA - SMPs': layer_1064J_009_SMP_gp_7,'<img src="legend/1064J_007_WD_gp_5.png" /> MA - Water Main': layer_1064J_007_WD_gp_5,'<img src="legend/1064J_006_MA_gp_4.png" /> MA - AWSS': layer_1064J_006_MA_gp_4,'<img src="legend/1064J_008_SW_gp_6.png" /> SW - Sewer Main': layer_1064J_008_SW_gp_6,'<img src="legend/1064J_003_REF_gp_3.png" /> REF - Reference': layer_1064J_003_REF_gp_3,'<img src="legend/1064J_002_S_gp_2.png" /> S - Basements': layer_1064J_002_S_gp_2,'<img src="legend/1064J_001_U_gp_1.png" /> U - Utility Occupancy': layer_1064J_001_U_gp_1,"Street Map": layer_OSMStandard_0,}).addTo(map);
         setBounds();
+
         </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 </html>
