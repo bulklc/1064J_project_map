@@ -19,13 +19,23 @@
             padding: 0;
             margin: 0;
         }
+
+
+        .btn {font-size:12px;}
+
+input[type=checkbox] {
+    transform: scale(1.1);
+    vertical-align:top;
+}
+
         </style>
     </head>
     <body>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/L.Control.Locate.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -505,38 +515,119 @@
                 },
                 mouseover: highlightFeature,
             });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>Removal Sheet</strong><br />' + (feature.properties['Removal Sheet'] !== null ? Autolinker.link(feature.properties['Removal Sheet'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Removal As-Builts</strong><br />' + (feature.properties['Removal As Builts'] !== null ? Autolinker.link(feature.properties['Removal As Builts'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Layout Sheet</strong><br />' + (feature.properties['Layout Sheet'] !== null ? Autolinker.link(feature.properties['Layout Sheet'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Layout As-Builts</strong><br />' + (feature.properties['Layout As Builts'] !== null ? Autolinker.link(feature.properties['Layout As Builts'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Irrigation Sheet</strong><br />' + (feature.properties['Irrigation Sheet'] !== null ? Autolinker.link(feature.properties['Irrigation Sheet'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Irrigation As-Builts</strong><br />' + (feature.properties['Irrigation As Builts'] !== null ? Autolinker.link(feature.properties['Irrigation As Builts'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Planting Sheet</strong><br />' + (feature.properties['Planting Sheet'] !== null ? Autolinker.link(feature.properties['Planting Sheet'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Planting As Builts</strong><br />' + (feature.properties['Planting As Builts'] !== null ? Autolinker.link(feature.properties['Planting As Builts'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>TCP</strong><br />' + (feature.properties['TCP'] !== null ? Autolinker.link(feature.properties['TCP'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Relevant Documents</strong><br />' + (feature.properties['Relevant Docs'] !== null ? Autolinker.link(feature.properties['Relevant Docs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '<div class="accordion" id="L_popup">\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_removal_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_01" aria-expanded="false" aria-controls="L_collapse_01"><strong>Removal Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_01" class="collapse" aria-labelledby="L_removal_sheet" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Removal Sheet'] !== null ? Autolinker.link(feature.properties['Removal Sheet'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_removal_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_02" aria-expanded="false" aria-controls="L_collapse_02"><strong>Removal As-Builts(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_02" class="collapse" aria-labelledby="L_removal_AB" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Removal As Builts'] !== null ? Autolinker.link(feature.properties['Removal As Builts'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_layout_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_03" aria-expanded="false" aria-controls="L_collapse_03"><strong>Layout Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_03" class="collapse" aria-labelledby="L_layout_sheet" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Layout Sheet'] !== null ? Autolinker.link(feature.properties['Layout Sheet'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_layout_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_04" aria-expanded="false" aria-controls="L_collapse_04"><strong>Layout As Built(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_04" class="collapse" aria-labelledby="L_layout_AB" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Layout As Builts'] !== null ? Autolinker.link(feature.properties['Layout As Builts'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_irrigation_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_05" aria-expanded="false" aria-controls="L_collapse_05"><strong>Irrigation Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_05" class="collapse" aria-labelledby="L_irrigation_sheet" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Irrigation Sheet'] !== null ? Autolinker.link(feature.properties['Irrigation Sheet'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_irrigation_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_06" aria-expanded="false" aria-controls="L_collapse_06"><strong>Irrigation Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_06" class="collapse" aria-labelledby="L_irrigation_AB" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Irrigation As Builts'] !== null ? Autolinker.link(feature.properties['Irrigation As Builts'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_planting_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_07" aria-expanded="false" aria-controls="L_collapse_07"><strong>Planting Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_07" class="collapse" aria-labelledby="L_planting_sheet" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Planting Sheet'] !== null ? Autolinker.link(feature.properties['Planting Sheet'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_planting_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_08" aria-expanded="false" aria-controls="L_collapse_08"><strong>Planting As Built(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_08" class="collapse" aria-labelledby="L_planting_AB" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Planting As Builts'] !== null ? Autolinker.link(feature.properties['Planting As Builts'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_TCP">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_09" aria-expanded="false" aria-controls="L_collapse_09"><strong>Traffic Control Plan(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_09" class="collapse" aria-labelledby="L_TCP" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['TCP'] !== null ? Autolinker.link(feature.properties['TCP'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="L_relevant">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#L_collapse_10" aria-expanded="false" aria-controls="L_collapse_10"><strong>Relevant Document(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="L_collapse_10" class="collapse" aria-labelledby="L_relevant" data-parent="#L_popup">\
+                                <div class="card-body">'+ (feature.properties['Relevant Docs'] !== null ? Autolinker.link(feature.properties['Relevant Docs'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                </div>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
