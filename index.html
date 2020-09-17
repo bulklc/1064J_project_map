@@ -900,20 +900,53 @@
                 },
                 mouseover: highlightFeature,
             });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>Sheet</strong><br />' + (feature.properties['SHEETs'] !== null ? Autolinker.link(feature.properties['SHEETs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Progress Payments As-Builts</strong><br />' + (feature.properties['PP ABs'] !== null ? Autolinker.link(feature.properties['PP ABs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>TCPs</strong><br />' + (feature.properties['TCPs'] !== null ? Autolinker.link(feature.properties['TCPs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Relevant Documents</strong><br />' + (feature.properties['RLVNT DOCs'] !== null ? Autolinker.link(feature.properties['RLVNT DOCs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+var popupContent = '<div class="accordion" id="RA_popup">\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="RA_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#RA_collapse_01" aria-expanded="false" aria-controls="RA_collapse_01"><strong>Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="RA_collapse_01" class="collapse" aria-labelledby="RA_sheet" data-parent="#RA_popup">\
+                                <div class="card-body">' + (feature.properties['SHEETs'] !== null ? Autolinker.link(feature.properties['SHEETs'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="RA_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#RA_collapse_02" aria-expanded="false" aria-controls="RA_collapse_02"><strong>As Built(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="RA_collapse_02" class="collapse" aria-labelledby="RA_AB" data-parent="#RA_popup">\
+                                <div class="card-body">'+ (feature.properties['PP ABs'] !== null ? Autolinker.link(feature.properties['PP ABs'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="RA_TCP">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#RA_collapse_03" aria-expanded="false" aria-controls="RA_collapse_03"><strong>Traffic Control Plan(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="RA_collapse_03" class="collapse" aria-labelledby="RA_TCP" data-parent="#RA_popup">\
+                                <div class="card-body">'+ (feature.properties['TCPs'] !== null ? Autolinker.link(feature.properties['TCPs'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="RA_relevant">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#RA_collapse_04" aria-expanded="false" aria-controls="RA_collapse_04"><strong>Relevant Document(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="RA_collapse_04" class="collapse" aria-labelledby="RA_relevant" data-parent="#RA_popup">\
+                                <div class="card-body">'+ (feature.properties['RLVNT DOCs'] !== null ? Autolinker.link(feature.properties['RLVNT DOCs'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                </div>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
@@ -954,17 +987,42 @@
                 },
                 mouseover: highlightFeature,
             });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>Sheet</strong><br />' + (feature.properties['Sheet'] !== null ? Autolinker.link(feature.properties['Sheet'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Progress Payment As-Builts</strong><br />' + (feature.properties['PP As Builts'] !== null ? Autolinker.link(feature.properties['PP As Builts'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>TCPs</strong><br />' + (feature.properties['TCP'] !== null ? Autolinker.link(feature.properties['TCP'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+var popupContent = '<div class="accordion" id="JT_popup">\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="JT_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#JT_collapse_01" aria-expanded="false" aria-controls="JT_collapse_01"><strong>Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="JT_collapse_01" class="collapse" aria-labelledby="JT_sheet" data-parent="#JT_popup">\
+                                <div class="card-body">' + (feature.properties['Sheet'] !== null ? Autolinker.link(feature.properties['Sheet'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="JT_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#JT_collapse_02" aria-expanded="false" aria-controls="JT_collapse_02"><strong>As Built(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="JT_collapse_02" class="collapse" aria-labelledby="JT_AB" data-parent="#JT_popup">\
+                                <div class="card-body">'+ (feature.properties['PP As Builts'] !== null ? Autolinker.link(feature.properties['PP As Builts'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="JT_TCP">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#JT_collapse_03" aria-expanded="false" aria-controls="JT_collapse_03"><strong>Traffic Control Plan(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="JT_collapse_03" class="collapse" aria-labelledby="JT_TCP" data-parent="#JT_popup">\
+                                <div class="card-body">'+ (feature.properties['TCP'] !== null ? Autolinker.link(feature.properties['TCP'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                </div>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
@@ -1005,20 +1063,53 @@
                 },
                 mouseover: highlightFeature,
             });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>Sheet</strong><br />' + (feature.properties['SHEET'] !== null ? Autolinker.link(feature.properties['SHEET'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Progress Payment As-Builts</strong><br />' + (feature.properties['PP ABs'] !== null ? Autolinker.link(feature.properties['PP ABs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>TCPs</strong><br />' + (feature.properties['TCPs'] !== null ? Autolinker.link(feature.properties['TCPs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Relevant Documents</strong><br />' + (feature.properties['RLVNT DOCs'] !== null ? Autolinker.link(feature.properties['RLVNT DOCs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+var popupContent = '<div class="accordion" id="R_popup">\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="R_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#R_collapse_01" aria-expanded="false" aria-controls="R_collapse_01"><strong>Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="R_collapse_01" class="collapse" aria-labelledby="R_sheet" data-parent="#R_popup">\
+                                <div class="card-body">' + (feature.properties['SHEET'] !== null ? Autolinker.link(feature.properties['SHEET'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="R_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#R_collapse_02" aria-expanded="false" aria-controls="R_collapse_02"><strong>As Built(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="R_collapse_02" class="collapse" aria-labelledby="R_AB" data-parent="#R_popup">\
+                                <div class="card-body">'+ (feature.properties['PP ABs'] !== null ? Autolinker.link(feature.properties['PP ABs'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="R_TCP">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#R_collapse_03" aria-expanded="false" aria-controls="R_collapse_03"><strong>Traffic Control Plan(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="R_collapse_03" class="collapse" aria-labelledby="R_TCP" data-parent="#R_popup">\
+                                <div class="card-body">'+ (feature.properties['TCPs'] !== null ? Autolinker.link(feature.properties['TCPs'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="R_relevant">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#R_collapse_04" aria-expanded="false" aria-controls="R_collapse_04"><strong>Relevant Document(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="R_collapse_04" class="collapse" aria-labelledby="R_relevant" data-parent="#R_popup">\
+                                <div class="card-body">'+ (feature.properties['RLVNT DOCs'] !== null ? Autolinker.link(feature.properties['RLVNT DOCs'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                </div>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
@@ -1059,17 +1150,42 @@
                 },
                 mouseover: highlightFeature,
             });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>Sheet</strong><br />' + (feature.properties['Sheet'] !== null ? Autolinker.link(feature.properties['Sheet'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Progress Payment As-Builts</strong><br />' + (feature.properties['PP As Builts'] !== null ? Autolinker.link(feature.properties['PP As Builts'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>TCPs</strong><br />' + (feature.properties['TCP'] !== null ? Autolinker.link(feature.properties['TCP'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+var popupContent = '<div class="accordion" id="T_popup">\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="T_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#T_collapse_01" aria-expanded="false" aria-controls="T_collapse_01"><strong>Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="T_collapse_01" class="collapse" aria-labelledby="T_sheet" data-parent="#T_popup">\
+                                <div class="card-body">' + (feature.properties['Sheet'] !== null ? Autolinker.link(feature.properties['Sheet'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="T_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#T_collapse_02" aria-expanded="false" aria-controls="T_collapse_02"><strong>As Built(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="T_collapse_02" class="collapse" aria-labelledby="T_AB" data-parent="#T_popup">\
+                                <div class="card-body">'+ (feature.properties['PP As Builts'] !== null ? Autolinker.link(feature.properties['PP As Builts'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="T_TCP">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#T_collapse_03" aria-expanded="false" aria-controls="T_collapse_03"><strong>Traffic Control Plan(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="T_collapse_03" class="collapse" aria-labelledby="T_TCP" data-parent="#T_popup">\
+                                <div class="card-body">'+ (feature.properties['TCP'] !== null ? Autolinker.link(feature.properties['TCP'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                </div>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
@@ -1110,20 +1226,53 @@
                 },
                 mouseover: highlightFeature,
             });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>Sheet</strong><br />' + (feature.properties['SHEET'] !== null ? Autolinker.link(feature.properties['SHEET'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Progress Payment As Builts</strong><br />' + (feature.properties['PP ABs'] !== null ? Autolinker.link(feature.properties['PP ABs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>TCPs</strong><br />' + (feature.properties['TCPs'] !== null ? Autolinker.link(feature.properties['TCPs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                     <tr>\
-                        <td colspan="2"><strong>Relevant Documents</strong><br />' + (feature.properties['RLVNT DOCs'] !== null ? Autolinker.link(feature.properties['RLVNT DOCs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+var popupContent = '<div class="accordion" id="CR_popup">\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="CR_sheet">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CR_collapse_01" aria-expanded="false" aria-controls="CR_collapse_01"><strong>Sheet(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="CR_collapse_01" class="collapse" aria-labelledby="CR_sheet" data-parent="#CR_popup">\
+                                <div class="card-body">' + (feature.properties['SHEET'] !== null ? Autolinker.link(feature.properties['SHEET'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="CR_AB">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CR_collapse_02" aria-expanded="false" aria-controls="CR_collapse_02"><strong>As Built(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="CR_collapse_02" class="collapse" aria-labelledby="CR_AB" data-parent="#CR_popup">\
+                                <div class="card-body">'+ (feature.properties['PP ABs'] !== null ? Autolinker.link(feature.properties['PP ABs'].toLocaleString()) : '') +'</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="CR_TCP">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CR_collapse_03" aria-expanded="false" aria-controls="CR_collapse_03"><strong>Traffic Control Plan(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="CR_collapse_03" class="collapse" aria-labelledby="CR_TCP" data-parent="#CR_popup">\
+                                <div class="card-body">'+ (feature.properties['TCPs'] !== null ? Autolinker.link(feature.properties['TCPs'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                <div class="card">\
+                                <div class="card-header p-0" id="CR_relevant">\
+                                <h2 class="mb-0">\
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CR_collapse_04" aria-expanded="false" aria-controls="CR_collapse_04"><strong>Relevant Document(s)</strong></button>\
+                                </h2>\
+                                </div>\
+                                <div id="CR_collapse_04" class="collapse" aria-labelledby="CR_relevant" data-parent="#CR_popup">\
+                                <div class="card-body">'+ (feature.properties['RLVNT DOCs'] !== null ? Autolinker.link(feature.properties['RLVNT DOCs'].toLocaleString()) : '') + '</div>\
+                                </div>\
+                                </div>\
+\
+                                </div>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
